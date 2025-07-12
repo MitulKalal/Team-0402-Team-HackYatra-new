@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ReWear - Payment</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      as="style"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Plus+Jakarta+Sans:wght@400;500;700;800"
+      onload="this.rel='stylesheet'"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <style type="text/tailwindcss">
+      :root {
+        --primary-color: #c0ece1;
+        --background-color: #f9f9f9;
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --accent-color: #e6f7f2;
+      }
+      body {
+        @apply font-sans bg-[var(--background-color)] text-[var(--text-primary)] antialiased;
+      }
+      .button_primary {
+        @apply bg-[var(--primary-color)] text-[var(--text-primary)] rounded-full px-6 py-3 font-bold hover:bg-[var(--accent-color)] transition duration-200;
+      }
+      .input {
+        @apply bg-white border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[var(--primary-color)];
+      }
+      .card {
+        @apply bg-white rounded-xl shadow-sm p-6;
+      }
+      .order_summary_item {
+        @apply flex justify-between py-3 border-b border-gray-200;
+      }
+      .order_summary_total {
+        @apply flex justify-between pt-4 font-bold text-lg;
+      }
+      /* Custom styles for payment app buttons */
+      .payment-app-button {
+        @apply flex-1 py-3 px-4 rounded-lg font-semibold text-center transition duration-200 ease-in-out;
+        @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+        @apply focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-75;
+      }
+      .payment-app-button.google-pay {
+        background-color: #4285F4; /* Google Pay blue */
+        color: white;
+      }
+      .payment-app-button.phonepe {
+        background-color: #800080; /* PhonePe purple */
+        color: white;
+      }
+      .payment-app-button.paytm {
+        background-color: #00B9F1; /* Paytm blue */
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="min-h-screen flex flex-col bg-[var(--background-color)]">
+      <!-- Header -->
+      <header class="flex items-center justify-between border-b border-gray-200 px-10 py-4">
+        <div class="flex items-center gap-3">
+          <svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48">
+            <path
+              d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <h1 class="text-2xl font-bold">ReWear</h1>
+        </div>
+        <nav class="flex gap-8">
+          <a class="text-base font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]" href="#">Home</a>
+          <a class="text-base font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]" href="#">Cart</a>
+        </nav>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex justify-center px-4 py-12">
+        <div class="w-full max-w-4xl flex flex-col lg:flex-row gap-12">
+          <!-- Payment Form -->
+          <div class="lg:w-1/2">
+            <div class="card">
+              <h2 class="text-2xl font-semibold mb-6">Payment Details</h2>
+
+              <form class="space-y-6">
+                <!-- Payment Method -->
+                <div>
+                  <h3 class="text-lg font-medium mb-4">Payment Method</h3>
+                  <div class="flex gap-4">
+                    <!-- Credit Card -->
+                    <label class="flex items-center p-4 border rounded-lg cursor-pointer flex-1 transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--accent-color)] has-[:checked]:border-2">
+                      <input
+                        type="radio"
+                        name="payment_method"
+                        value="card"
+                        class="hidden payment-method-radio"
+                        checked
+                      />
+                      <span class="ml-3 text-base font-medium">Credit Card</span>
+                    </label>
+
+                    <!-- UPI -->
+                    <label class="flex items-center p-4 border rounded-lg cursor-pointer flex-1 transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--accent-color)] has-[:checked]:border-2">
+                      <input
+                        type="radio"
+                        name="payment_method"
+                        value="upi"
+                        class="hidden payment-method-radio"
+                      />
+                      <span class="ml-3 text-base font-medium">UPI</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Credit Card Fields -->
+                <div id="credit-card-fields" class="payment-fields">
+                  <div>
+                    <label class="block text-sm font-medium text-[var(--text-secondary)] mb-1" for="card-number">Card Number</label>
+                    <input class="input w-full" id="card-number" placeholder="•••• •••• •••• ••••" type="text" />
+                  </div>
+                  <div class="flex gap-4 mt-4">
+                    <div class="flex-1">
+                      <label class="block text-sm font-medium text-[var(--text-secondary)] mb-1" for="expiry-date">Expiry Date</label>
+                      <input class="input w-full" id="expiry-date" placeholder="MM/YY" type="text" />
+                    </div>
+                    <div class="flex-1">
+                      <label class="block text-sm font-medium text-[var(--text-secondary)] mb-1" for="cvv">CVV</label>
+                      <input class="input w-full" id="cvv" placeholder="•••" type="text" />
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <label class="block text-sm font-medium text-[var(--text-secondary)] mb-1" for="name-on-card">Name on Card</label>
+                    <input class="input w-full" id="name-on-card" placeholder="Your Name" type="text" />
+                  </div>
+                </div>
+
+                <!-- UPI Field and Buttons -->
+                <div id="upi-fields" class="payment-fields hidden">
+                  <div class="mt-4">
+                    <label class="block text-sm font-medium text-[var(--text-secondary)] mb-1" for="upi-id">UPI ID</label>
+                    <input class="input w-full" id="upi-id" placeholder="yourname@bank" type="text" />
+                  </div>
+                  <div class="mt-6 flex flex-col sm:flex-row gap-4">
+                    <button type="button" class="payment-app-button google-pay">Google Pay</button>
+                    <button type="button" class="payment-app-button phonepe">PhonePe</button>
+                    <button type="button" class="payment-app-button paytm">Paytm</button>
+                  </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="button_primary w-full py-4 text-lg mt-8">Submit Payment</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="lg:w-1/2">
+            <div class="card">
+              <h2 class="text-2xl font-semibold mb-6">Order Summary</h2>
+              <div class="space-y-4">
+                <div class="order_summary_item">
+                  <span class="text-[var(--text-secondary)]">1 x Vintage Denim Jacket</span>
+                  <span class="font-medium">350 Points</span>
+                </div>
+                <div class="order_summary_item">
+                  <span class="text-[var(--text-secondary)]">1 x Floral Summer Dress</span>
+                  <span class="font-medium">200 Points</span>
+                </div>
+                <div class="order_summary_item">
+                  <span class="text-[var(--text-secondary)]">Shipping</span>
+                  <span class="font-medium">$5.00</span>
+                </div>
+                <div class="order_summary_total">
+                  <span>Total</span>
+                  <span>$5.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto py-6 px-4 text-center">
+          <p class="text-base text-[var(--text-secondary)]">
+            © 2024 ReWear. All rights reserved. |
+            <a class="hover:underline" href="#">Contact Us</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Get all payment method radio buttons
+        const paymentMethodRadios = document.querySelectorAll('.payment-method-radio');
+        // Get the credit card fields container
+        const creditCardFields = document.getElementById('credit-card-fields');
+        // Get the UPI fields container
+        const upiFields = document.getElementById('upi-fields');
+
+        // Function to update the displayed fields based on the selected radio button
+        const updatePaymentFields = () => {
+          paymentMethodRadios.forEach(radio => {
+            if (radio.checked) {
+              if (radio.value === 'card') {
+                creditCardFields.classList.remove('hidden'); // Show credit card fields
+                upiFields.classList.add('hidden'); // Hide UPI fields
+              } else if (radio.value === 'upi') {
+                upiFields.classList.remove('hidden'); // Show UPI fields
+                creditCardFields.classList.add('hidden'); // Hide credit card fields
+              }
+            }
+          });
+        };
+
+        // Add event listeners to each radio button
+        paymentMethodRadios.forEach(radio => {
+          radio.addEventListener('change', updatePaymentFields);
+        });
+
+        // Initialize the fields display on page load
+        updatePaymentFields();
+      });
+    </script>
+  </body>
+</html>
