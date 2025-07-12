@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReWear - Cart</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Plus+Jakarta+Sans:wght@400;500;700;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #2aedbd;
+        --background-color: #f9f9f9;
+        --text-primary: #111418;
+        --text-secondary: #637488;
+        --accent-color: #e0e7ff;
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        @apply bg-[var(--background-color)] text-[var(--text-primary)];
+      }
+      .button_primary {
+        @apply bg-[var(--primary-color)] text-[var(--text-primary)] font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors;
+      }
+      .button_secondary {
+        @apply bg-white text-[var(--text-primary)] font-bold py-2 px-4 rounded-md border border-gray-300 hover:bg-gray-100;
+      }
+      .card {
+        @apply bg-white rounded-md shadow-md p-6;
+      }
+      .input {
+        @apply bg-white border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[var(--primary-color)];
+      }
+      .typography_h1 {
+        @apply text-3xl font-bold text-[var(--text-primary)];
+      }
+      .typography_h2 {
+        @apply text-2xl font-semibold text-[var(--text-primary)];
+      }
+      .typography_body {
+        @apply text-base text-[var(--text-secondary)];
+      }
+    </style>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto flex items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center gap-3 text-[var(--text-primary)]">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+<h1 class="text-2xl font-bold tracking-tight">ReWear</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Profile</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Products</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Order</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Sell Your Product</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="relative rounded-full p-2 text-[var(--text-secondary)] hover:bg-gray-100 hover:text-[var(--text-primary)] transition-colors">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+</svg>
+<span class="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--primary-color)] text-xs font-bold text-[var(--text-primary)]">3</span>
+</button>
+</div>
+</div>
+</header>
+<main class="main_container flex-1">
+<div class="card max-w-4xl mx-auto">
+<h1 class="typography_h1 mb-8 border-b pb-4">Your Cart</h1>
+<div class="space-y-6">
+<div class="flex items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-24 h-32 bg-center bg-no-repeat bg-cover rounded-md" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2TjcDRn3KeQVFzfM4pyhK4xrL6eq-t77ur2C8G8f1jIjZAxX2WlwxLEvRDKo923r7tmuSeXxJEpfIbeKsmRs_FJgKx-4i8y4MRPanNaKd54aZHXIEpQNkWSn1zRRAlyafWkHDSMFsOe0jqBjrDwSEBH92k96yiRVwG3FsJEZnTe6VZmzG01NDVqs5L_hv-z02uGDIMMjUbQo4_WWpJWhHyQk4jQR1RrQGQ7TIvaXfYF4ne3SpoUJtId_WZ_c8cGKbHtCFXWUNr2Q");'></div>
+<div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Vintage Denim Jacket</h3>
+<p class="typography_body">Size: M</p>
+</div>
+</div>
+<button class="text-[var(--text-secondary)] hover:text-red-500 transition-colors">
+<svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192Z"></path>
+</svg>
+</button>
+</div>
+<div class="flex items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-24 h-32 bg-center bg-no-repeat bg-cover rounded-md" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBheSllg2EH3tmmgNuJstX1aZ0r0_wKQ3g283IElJIzbA9GrKgEExH083PiLIs5wCxZ9lbbaP8IoITDDpcubjCllyZQlp8haXBj4mjK-FKMRPCVOezWy5FV8C_ygvIeHEnC3hh0SoYA6wu1S7aM9LM7RmAZdTugESsmuKTCaWDu2XvPZfvpw2IhuRMwTrv4BgwkKbvQvGV7RS0Zcvy-jLw6x-VcgM9lCxD6cFHbI_1iRfQR2SgjYbhNhq3F4Dnwm06sieFqbMwf9a0");'></div>
+<div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Silk Scarf</h3>
+<p class="typography_body">Size: S</p>
+</div>
+</div>
+<button class="text-[var(--text-secondary)] hover:text-red-500 transition-colors">
+<svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192Z"></path>
+</svg>
+</button>
+</div>
+<div class="flex items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-24 h-32 bg-center bg-no-repeat bg-cover rounded-md" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkkGmasrQZeQQ8v5Zc3oQ_hKlKSSfifQ-Z2AyjU3amDoMMy6AE-cgfLNRSQxYsPBwsYM5YKYm2vwhn8XxDZSs_3E6T-xSnSf-3PPzMvZFiCObuOoq3MFjzFOS7i4n4bXsbCJMU8PCUxtv5tKCN4s6Xk4k8aduyRln8rEp7L8S8u5e7g2mDDloAKe_ytycjqg4KvjtAgVL_oRV2Lp8QWTar0ZGnAh1q5FUOfxYoqQHGK3MieznLISdyJYIjoumkxp-euzyx_9mBLvY");'></div>
+<div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Leather Boots</h3>
+<p class="typography_body">Size: L</p>
+</div>
+</div>
+<button class="text-[var(--text-secondary)] hover:text-red-500 transition-colors">
+<svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192Z"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t flex justify-end">
+<button class="button_primary">
+                Review Swap
+              </button>
+</div>
+</div>
+</main>
+<footer class="bg-white mt-12">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+<p class="typography_body">Contact us at 1234567890 or support@rewear.com</p>
+</div>
+</footer>
+</div>
+</div>
+
+</body></html>

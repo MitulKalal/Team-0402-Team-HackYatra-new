@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ReWear Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style type="text/tailwindcss">
+      :root {
+        --primary-color: #27ecba;
+        --background-color: #f9f9f9;
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --accent-color: #e0f7fa;
+        --muted-color: #999999;
+        --button-hover: #22c5ab;
+        --input-border: #cccccc;
+        --input-focus: #27ecba;
+        --error: #ef4444;
+      }
+      body {
+        @apply font-sans bg-[var(--background-color)] text-[var(--text-primary)];
+      }
+      .button_primary {
+        @apply bg-[var(--primary-color)] text-white rounded-full px-6 py-3 font-bold hover:bg-[var(--button-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50 transition duration-200;
+      }
+      .button_secondary {
+        @apply bg-[var(--accent-color)] text-[var(--primary-color)] rounded-full px-6 py-3 font-bold hover:bg-[var(--button-hover)] hover:text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50 transition duration-200;
+      }
+      .input {
+        @apply border border-[var(--input-border)] rounded-lg px-4 py-3 w-full focus:outline-none focus:border-[var(--input-focus)] focus:ring-1 focus:ring-[var(--input-focus)] focus:ring-opacity-50;
+      }
+      .card {
+        @apply bg-white rounded-xl shadow-sm p-6;
+      }
+      .tab-button.active {
+        @apply bg-[var(--primary-color)] text-white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex h-screen">
+      <!-- Main Content -->
+      <main class="flex-1 p-8 bg-[var(--background-color)]">
+        <div class="card">
+          <div class="flex justify-between items-center mb-6">
+            <h1 class="text-xl font-semibold">Admin Panel</h1>
+            <div class="flex items-center space-x-4">
+              <div class="relative">
+                <input class="input py-2 px-4 w-64" placeholder="Search..." type="text" id="searchInput"/>
+                <span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">search</span>
+              </div>
+              <button class="relative">
+                <span class="material-icons text-[var(--text-secondary)]">notifications</span>
+                <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Management Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <button class="button_secondary tab-button active" data-target="users">Manage Users</button>
+            <button class="button_secondary tab-button" data-target="orders">Manage Orders</button>
+            <button class="button_secondary tab-button" data-target="listings">Manage Listings</button>
+          </div>
+
+          <!-- Content Sections -->
+          <div id="content-sections">
+            <!-- User Management Section -->
+            <div id="users-section" class="management-section">
+              <h2 class="text-lg font-semibold mb-4">Manage Users</h2>
+              <div class="space-y-4" id="user-list">
+                <!-- User Cards will be rendered here by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Order Management Section -->
+            <div id="orders-section" class="management-section hidden">
+              <h2 class="text-lg font-semibold mb-4">Manage Orders</h2>
+              <div class="space-y-4" id="order-list">
+                <!-- Order Cards will be rendered here by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Listing Management Section -->
+            <div id="listings-section" class="management-section hidden">
+              <h2 class="text-lg font-semibold mb-4">Manage Listings</h2>
+              <div class="space-y-4" id="listing-list">
+                <!-- Listing Cards will be rendered here by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const managementSections = document.querySelectorAll('.management-section');
+        const searchInput = document.getElementById('searchInput');
+
+        // Data for demonstration
+        const users = [
+          { id: 1, name: 'John Doe', email: 'john.doe@example.com', avatar: 'https://placehold.co/48x48/e0f7fa/27ecba?text=JD' },
+          { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', avatar: 'https://placehold.co/48x48/e0f7fa/27ecba?text=JS' },
+          { id: 3, name: 'Peter Jones', email: 'peter.jones@example.com', avatar: 'https://placehold.co/48x48/e0f7fa/27ecba?text=PJ' },
+          { id: 4, name: 'Mary Johnson', email: 'mary.johnson@example.com', avatar: 'https://placehold.co/48x48/e0f7fa/27ecba?text=MJ' }
+        ];
+
+        const orders = [
+          { id: 'ORD001', user: 'John Doe', item: 'Vintage Denim Jacket', status: 'Pending', date: '2024-07-01' },
+          { id: 'ORD002', user: 'Jane Smith', item: 'Floral Summer Dress', status: 'Completed', date: '2024-06-28' },
+          { id: 'ORD003', user: 'Peter Jones', item: 'Leather Boots', status: 'Shipped', date: '2024-07-03' },
+          { id: 'ORD004', user: 'Mary Johnson', item: 'Silk Scarf', status: 'Pending', date: '2024-07-05' }
+        ];
+
+        const listings = [
+          { id: 'LST001', owner: 'John Doe', title: 'Blue Jeans', category: 'Bottoms', status: 'Active' },
+          { id: 'LST002', owner: 'Jane Smith', title: 'Red Blouse', category: 'Tops', status: 'Active' },
+          { id: 'LST003', owner: 'Peter Jones', title: 'Winter Coat', category: 'Outerwear', status: 'Inactive' },
+          { id: 'LST004', owner: 'Mary Johnson', title: 'Sneakers', category: 'Footwear', status: 'Active' }
+        ];
+
+        let activeSection = 'users'; // Default active section
+
+        // Function to render user cards
+        const renderUsers = (filteredUsers = users) => {
+          const userListDiv = document.getElementById('user-list');
+          userListDiv.innerHTML = ''; // Clear existing content
+          if (filteredUsers.length === 0) {
+            userListDiv.innerHTML = '<p class="text-[var(--text-secondary)]">No users found.</p>';
+            return;
+          }
+          filteredUsers.forEach(user => {
+            const userCard = `
+              <div class="card flex items-center justify-between p-4">
+                <div class="flex items-center space-x-4">
+                  <img alt="User avatar" class="w-12 h-12 rounded-full" src="${user.avatar}"/>
+                  <div>
+                    <p class="font-semibold">${user.name}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">${user.email}</p>
+                  </div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="button_primary py-2 px-4">View Profile</button>
+                  <button class="button_secondary py-2 px-4">Edit User</button>
+                </div>
+              </div>
+            `;
+            userListDiv.innerHTML += userCard;
+          });
+        };
+
+        // Function to render order cards
+        const renderOrders = (filteredOrders = orders) => {
+          const orderListDiv = document.getElementById('order-list');
+          orderListDiv.innerHTML = ''; // Clear existing content
+          if (filteredOrders.length === 0) {
+            orderListDiv.innerHTML = '<p class="text-[var(--text-secondary)]">No orders found.</p>';
+            return;
+          }
+          filteredOrders.forEach(order => {
+            const orderCard = `
+              <div class="card flex items-center justify-between p-4">
+                <div class="flex items-center space-x-4">
+                  <div>
+                    <p class="font-semibold">Order ID: ${order.id}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">User: ${order.user}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Item: ${order.item}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Status: ${order.status}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Date: ${order.date}</p>
+                  </div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="button_primary py-2 px-4">View Order</button>
+                  <button class="button_secondary py-2 px-4">Update Status</button>
+                </div>
+              </div>
+            `;
+            orderListDiv.innerHTML += orderCard;
+          });
+        };
+
+        // Function to render listing cards
+        const renderListings = (filteredListings = listings) => {
+          const listingListDiv = document.getElementById('listing-list');
+          listingListDiv.innerHTML = ''; // Clear existing content
+          if (filteredListings.length === 0) {
+            listingListDiv.innerHTML = '<p class="text-[var(--text-secondary)]">No listings found.</p>';
+            return;
+          }
+          filteredListings.forEach(listing => {
+            const listingCard = `
+              <div class="card flex items-center justify-between p-4">
+                <div class="flex items-center space-x-4">
+                  <div>
+                    <p class="font-semibold">Listing ID: ${listing.id}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Owner: ${listing.owner}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Title: ${listing.title}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Category: ${listing.category}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Status: ${listing.status}</p>
+                  </div>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="button_primary py-2 px-4">View Listing</button>
+                  <button class="button_secondary py-2 px-4">Edit Listing</button>
+                </div>
+              </div>
+            `;
+            listingListDiv.innerHTML += listingCard;
+          });
+        };
+
+        // Function to switch between management sections
+        const switchSection = (targetSectionId) => {
+          // Hide all sections
+          managementSections.forEach(section => {
+            section.classList.add('hidden');
+          });
+
+          // Show the target section
+          document.getElementById(`${targetSectionId}-section`).classList.remove('hidden');
+          activeSection = targetSectionId; // Update active section
+
+          // Update active button styling
+          tabButtons.forEach(button => {
+            if (button.dataset.target === targetSectionId) {
+              button.classList.add('active');
+            } else {
+              button.classList.remove('active');
+            }
+          });
+
+          // Clear search input and re-render current section
+          searchInput.value = '';
+          if (activeSection === 'users') {
+            renderUsers();
+          } else if (activeSection === 'orders') {
+            renderOrders();
+          } else if (activeSection === 'listings') {
+            renderListings();
+          }
+        };
+
+        // Event listeners for tab buttons
+        tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            switchSection(button.dataset.target);
+          });
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', (event) => {
+          const searchTerm = event.target.value.toLowerCase();
+
+          if (activeSection === 'users') {
+            const filteredUsers = users.filter(user =>
+              user.name.toLowerCase().includes(searchTerm) ||
+              user.email.toLowerCase().includes(searchTerm)
+            );
+            renderUsers(filteredUsers);
+          } else if (activeSection === 'orders') {
+            const filteredOrders = orders.filter(order =>
+              order.id.toLowerCase().includes(searchTerm) ||
+              order.user.toLowerCase().includes(searchTerm) ||
+              order.item.toLowerCase().includes(searchTerm) ||
+              order.status.toLowerCase().includes(searchTerm)
+            );
+            renderOrders(filteredOrders);
+          } else if (activeSection === 'listings') {
+            const filteredListings = listings.filter(listing =>
+              listing.id.toLowerCase().includes(searchTerm) ||
+              listing.owner.toLowerCase().includes(searchTerm) ||
+              listing.title.toLowerCase().includes(searchTerm) ||
+              listing.category.toLowerCase().includes(searchTerm) ||
+              listing.status.toLowerCase().includes(searchTerm)
+            );
+            renderListings(filteredListings);
+          }
+        });
+
+        // Initial render of the users section
+        renderUsers();
+      });
+    </script>
+  </body>
+</html>
