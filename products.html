@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReWear - Item Details</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #2aedbd;
+        --background-color: #f9f9f9;
+        --text-primary: #111418;
+        --text-secondary: #637488;
+        --accent-color: #e0e7ff;
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-primary);
+      }
+      .button_primary {
+        @apply bg-[var(--primary-color)] text-[var(--text-primary)] font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors duration-300;
+      }
+      .button_secondary {
+        @apply bg-white text-[var(--text-primary)] font-bold py-3 px-6 rounded-md border border-gray-300 hover:bg-gray-100 transition-colors duration-300;
+      }
+    </style>
+</head>
+<body class="bg-[var(--background-color)] text-[var(--text-primary)]">
+<div class="flex flex-col min-h-screen">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+<a class="flex items-center gap-3" href="#">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+<h1 class="text-2xl font-bold text-[var(--text-primary)]">ReWear</h1>
+</a>
+<div class="hidden md:flex items-center space-x-8 text-base font-medium">
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Home</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Profile</a>
+<a class="text-[var(--text-primary)] font-semibold border-b-2 border-[var(--primary-color)] pb-1" href="#">Products</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Order</a>
+<a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors" href="#">Sell Your Product</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+<svg class="text-[var(--text-secondary)]" fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"></path>
+</svg>
+</button>
+<div class="h-10 w-10 rounded-full bg-cover bg-center ring-2 ring-offset-2 ring-[var(--primary-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDmJ1eMDjlhMPR0POJmWpS0Hdv4yvnBN2MLio_EsiYIXhn5k_AM139Qva3jqS22qQOSHRUxFdQVQhUu-gIRX4ypFDp2F1to11JoyGVS3YvP39EejscmLjEsD_bzaC47Zv9hM0Ycl3mpH1EJO1wUK3dWxNCr6V7NQ8iVytPsQgRMpPZcRTlrODivZKmjlJeXKtnuhwX51Om5ufQQ3zKvLArKT9jDF1CyFt-EBTrtoF2sYQw4XRUdXaqhi9g_1DEgk_UNWEkwZ601Gt8");'></div>
+</div>
+</nav>
+</header>
+<main class="flex-grow container mx-auto px-6 py-8">
+<div class="mb-6 text-sm text-[var(--text-secondary)]">
+<a class="hover:text-[var(--text-primary)]" href="#">Products</a>
+<span class="mx-2">/</span>
+<span class="text-[var(--text-primary)]">Item Details</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div class="w-full">
+<div class="w-full aspect-w-4 aspect-h-5 rounded-lg overflow-hidden bg-cover bg-center shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaRkyvSPS8zbktptoxvbqTJI5h24WcgRLqmynuhJZRqmE-QW2afWH9GzTYiOzwDGm2ysloAWjrbouec6gcSpfUpMTcpeyVNUQ9a223Potlz9365uAjVFp29P2bZnPegIt_p7o_B1VHNs6kzCA2s_C0pL73n-SLlVvi5lUuPXWBRN_bDB0vRmb8oQdwsa_CMwvsyO3aflBqokX453DBqIpxmduZq709VQ6wUOmW-eP3EBtwg4AM_nPmHtja8FgvrP72Q0TnT2OFlko");'></div>
+</div>
+<div class="flex flex-col justify-center">
+<h1 class="text-4xl font-extrabold text-[var(--text-primary)] mb-4">Elegant Evening Gown</h1>
+<p class="text-[var(--text-secondary)] text-lg mb-6">
+              This stunning evening gown is perfect for any formal occasion. It features a flattering silhouette, intricate detailing, and is made from high-quality, sustainable
+              materials. Available for swap or redeem with points.
+            </p>
+<div class="border-t border-gray-200 pt-6">
+<h3 class="text-xl font-bold text-[var(--text-primary)] mb-4">Uploaded by</h3>
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8nCcl17sHeT6iHY9meVcW1jE1AUyL6RJg8apTVQ8MQ4_AykIXEXQTyXdl6mdOXvtbH01HSUsH07dXbbFWchjnsL15gG7YzjpvwnDbQMr1IHQ00fbWUYB2nbJa0J8KbI6V1yVqFwvG3Dh1KZryRzvuiwloatahDHae0bYtOfxO5m3Ti2q4NvKifVDNIWjHIQUoW-jkW34NAsRc-R8lFTHwjPVMztwqNXLRLBUHSgM6_BW6oU-CxOiaN7axh6sQidUbAKiDdjx2tbM");'></div>
+<div>
+<p class="text-lg font-semibold text-[var(--text-primary)]">Sophia Clark</p>
+<p class="text-base text-[var(--text-secondary)]">Joined 2021</p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-6 mt-6">
+<h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">Availability</h3>
+<p class="text-lg text-green-600 font-semibold bg-green-100 px-3 py-1 rounded-full inline-block">Available for swap or redeem</p>
+</div>
+<div class="mt-8 flex flex-col sm:flex-row gap-4">
+<button class="button_primary w-full sm:w-auto">Swap Request</button>
+<button class="button_secondary w-full sm:w-auto">Redeem via Points</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white mt-12 py-8 border-t border-gray-200">
+<div class="container mx-auto px-6 text-center text-[var(--text-secondary)]">
+<p>Contact us at 1234567890 or support@rewear.com</p>
+<p class="mt-2 text-sm">© 2024 ReWear. All Rights Reserved.</p>
+</div>
+</footer>
+</div>
+
+</body></html>

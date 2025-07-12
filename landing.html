@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReWear - Sustainable Fashion Exchange</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #2aedbd;
+        --background-color: #f9f9f9;
+        --text-primary: #111418;
+        --text-secondary: #637488;
+        --accent-color: #e0e7ff;
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-primary);
+      }
+      .button_primary {
+        @apply bg-[var(--primary-color)] text-[var(--text-primary)] font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors;
+      }
+      .button_secondary {
+        @apply bg-white text-[var(--text-primary)] font-bold py-3 px-6 rounded-md border border-gray-300 hover:bg-gray-100 transition-colors;
+      }
+      .typography_h1 {
+        @apply text-5xl font-bold text-white;
+      }
+      .typography_h2 {
+        @apply text-3xl font-bold text-[var(--text-primary)];
+      }
+      .typography_body {
+        @apply text-lg text-white;
+      }
+    </style>
+</head>
+<body>
+<div class="flex flex-col min-h-screen">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+<h1 class="text-2xl font-bold text-[var(--text-primary)]">ReWear</h1>
+</div>
+<div class="hidden md:flex items-center gap-8 text-base font-medium text-[var(--text-secondary)]">
+<a class="hover:text-[var(--primary-color)] transition-colors" href="#">Home</a>
+<a class="hover:text-[var(--primary-color)] transition-colors" href="#">Profile</a>
+<a class="hover:text-[var(--primary-color)] transition-colors" href="#">Products</a>
+<a class="hover:text-[var(--primary-color)] transition-colors" href="#">Order</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="button_primary hidden sm:block">Sell Your Product</button>
+<div class="w-10 h-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXkuykjv-qvOoN-MQu6QXUbiQEL8kLkukTO8SC0YidMMYm7DBKb9jUvEc5uaP6gBcb6PFm-ziOMKXGsrDJNHW5GDocEUHVitKBctgUvn3ahm0w_SIFPMH3WrNgvw9MjyEaVMY1X6X_VykgENL2dzGYu1hPrVyi1bO3d9OBI5EKqNi_nEXTsZPJ0yQNUY_zKmoTQRqjPiRFhjkZQm13ndkwllXO70YbtB7IH3np38imUzWXh2CUFxTO3J6Pu97nn3hJAKKcju8HtCk");'></div>
+</div>
+</nav>
+</header>
+<main class="flex-grow">
+<section class="relative h-[600px] bg-cover bg-center flex items-center justify-center text-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7VX1uQYqCrYxCcfo5ZfVfUYJ9izKtumlxMH-QqpvRLXMDeEx39RsFVhrgFTgDEmCL1MCxsLYahmNM02Ffnk8DyRqQNUV-HODoz5QtiWBY7JbKeMbL5EC1N9-LwwmBy0SweaDB4pT1TrFHnchdkp-YY2MCK81jogd7xvMAxsIjuuzkxUmSxdC8BgeRWmo25GZsKOKYQ-HWsxnn7kac2gx0F-kBKW1cQCkAe17I0I0cRCm6rki9AzqSc5_l8eCQfpZoAHvolH6_FS8");'>
+<div class="max-w-3xl px-4">
+<h1 class="typography_h1 mb-4">Swap, Style, Sustain</h1>
+<p class="typography_body mb-8">
+              Discover a new way to refresh your wardrobe. Exchange clothes directly or use our point-based system. Join the sustainable fashion movement today.
+            </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="button_primary">Start Swapping</button>
+<button class="button_secondary">Browse Items</button>
+</div>
+</div>
+</section>
+<section class="py-16">
+<div class="container mx-auto px-6">
+<h2 class="typography_h2 text-center mb-12">Featured Items</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+<div class="bg-white rounded-lg shadow-md overflow-hidden group">
+<div class="h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsUilRYvXg9YwhoQdF6BfMNYrJWLBQ1BzniUIZRWolNO2XYfyymGMHk3j0VWDFppVmRGLGtFgI5v03PWUutvD3h0MBMjJyd7VlfS0_TypTpol4XS6_sGqRP6J9iIlZVqEMGPPPWYLbW2LfddLgtCcAs1ZO_dbYGaJE93aCLD3OnQt9ioHNgSNCMo7jjmd03p4DGv2gxwONWLcima_xuxbW5z7uC7VYsONBDjYp7sncHgxWwR1v0m65CmpVP4JsysPwwHu1AhYK2ZM");'></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Stylish Jacket</h3>
+<p class="text-[var(--text-secondary)]">Size: M</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden group">
+<div class="h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAk80vOWkyIgvrMw-2rp53dsxiZ8YYtDRbTVcA3ZFtmGmpk0g4R-swghargCj8G4yDLkzSXJhKYDhJzkA1gMyqZBgCP5br-0sM8_Cc2CVwiJu9NRRGTjgOM0fhsUFjGxmefTBH5cWhyPKxI5_gWCLEiIWGNDoHXRpRqjETd33v_QkLyawYZuM7wq1Ausavm4tEluVq5o3nNjhARrnZP8OLF_Rhqu12agp9SFoW7gg_tgizRfVf9noyIerUH2C345zXufBcaQj52Wg");'></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Trendy Shirt</h3>
+<p class="text-[var(--text-secondary)]">Size: L</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden group">
+<div class="h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiws7USov_-cpNRjuCc4r_LF7SaIGpDxcumIbarg40v6dJIJUS11zObFS81o8vQT8EVKED3o5IvRYQvrSpo9760yXlAZ_ZTkwJQVBYt-sxyHRARjbRePeFlxzct3CpoP-R8EG7MWYHXVS0gtpE5F40q1wGr1Vca5LlCKXe3nFY6OSZyuSQ_Dv2fp1Lj5Wo3N8L5XsK2Iye0D6kgHK3wzl7cqbfpcZMJm_Aup4frJCqebJRQ5BJ50SKoF4m9rZYUA1BlXZSAh2ZTCk");'></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Fashionable Dress</h3>
+<p class="text-[var(--text-secondary)]">Size: S</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden group">
+<div class="h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCP5Os848VKUcxIRD_XH5JZQDJeovDIHZj_ph3cNuxFJpJw6fb2mjmWr_tIV8WBeTzJ1buubWndj0H_VS0petWvoOvmLQdlLCMzE-rkFf5f0mLFTxgTniYgnoROn3VelNQ6HNAVHr9-a2vCISIFLuSTeblWGV9xf1PcjKwtkN9nQXiia_taM97Z6eNKWZ8pZRuXmOCfQWQ6lSWmsvghBeS15KCTvbIE_SHmWf2hw91xJLbhQi-hrAQFmpkyAftjqFnkCNEULsjOX4w");'></div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Vintage Jeans</h3>
+<p class="text-[var(--text-secondary)]">Size: 32</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-100 border-t border-gray-200">
+<div class="container mx-auto px-6 py-8 text-center text-[var(--text-secondary)]">
+<div class="flex justify-center items-center gap-6 mb-4">
+<a class="hover:text-[var(--primary-color)] transition-colors" href="tel:1234567890">Phone: 123-456-7890</a>
+<a class="hover:text-[var(--primary-color)] transition-colors" href="mailto:support@rewear.com">Email: support@rewear.com</a>
+</div>
+<p>© 2024 ReWear. All rights reserved.</p>
+</div>
+</footer>
+</div>
+
+</body></html>
